@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-image: url(./img/splashImage.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: color-dodge;
+}
+.searchButton{
+    
+}
+
+.mainContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+}

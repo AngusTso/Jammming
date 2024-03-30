@@ -1,0 +1,14 @@
+.playlistContainer{
+    margin-top: 3rem;
+    background-color: rgba(55, 99, 174, 0.7);
+    width: 40%;
+    min-height: 30rem;
+}
+
+.button{
+    background-color: blueviolet;
+    border-radius: 10px;
+    font-size: 2rem;
+    color: white;
+    width: 20%;
+}

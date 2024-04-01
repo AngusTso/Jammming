@@ -8,17 +8,20 @@ import Playlist from './Playlist.js'
 import styles from './App.module.css';
 
 function App(){
+  const [songResult , setSongResult] = useState([]);
+  function handleSearchResult(result){
+    setSongResult(result)
+  }
   return(
     <div className={styles.container}>
       <HomeBar/>
       <div> 
-        <SearchBar/>
+        <SearchBar handleSearchResult={handleSearchResult}/>
       </div>
       <div className={styles.mainContainer}>
-        <SearchResult />
-        <Playlist />
+        <SearchResult songResult={songResult} />
+        <Playlist/>
       </div>
-      
     </div>
   )
 }

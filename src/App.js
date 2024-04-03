@@ -9,7 +9,7 @@ import styles from './App.module.css';
 
 //Todo: Implement get token and get used id
 const token = 'BQC9RQCihi521AWEL3CF2mRfBDIkTXSzPB5ZsTII4-dMtIuvAhC_nBs3Gb-t0DdmYxn0tP-HlGQ0CXuZijohSDTVwV6pn4UtrFk0N6Y8eZXT35VJJc4';
-const userId = "31ow3kd4fjz6orgfdh4kzofb7r6m"
+const userId = ""
 
 function App(){
   const [songResult , setSongResult] = useState([]);

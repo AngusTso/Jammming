@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Track.module.css';
 
-function Track({songName,artist,album}){
+function Track({id,songName,artist,album,manipulatePlaylist,sign}){
     return(
         <>
             <div className={styles.trackContainer}>
@@ -9,7 +9,7 @@ function Track({songName,artist,album}){
                 <h2 className={styles.h2}>{songName}</h2>
                 <h3 className={styles.h3}>{artist} | {album}</h3>
             </div>
-            <button className={styles.button}>+</button>
+            <button className={styles.button} onClick={() => manipulatePlaylist({id,songName,artist,album})}>{sign}</button>
             </div>
             <hr style={{color : 'white'}}/>
         </>

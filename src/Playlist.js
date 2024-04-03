@@ -2,27 +2,14 @@ import React,{useState} from "react";
 import styles from './Playlist.module.css';
 import Track from "./Track";
 
-function Playlist(){
-    const [playlistName, setPlaylistName] = useState("");
-    const [playlist , setplaylist] = useState([{
-        id: 1111,
-        songName: 'Happy',
-        artist: 'Pharell',
-        album: 'Happy'
-    },{
-        id: 11311,
-        songName: 'jogging',
-        artist: 'Minju',
-        album: 'Minju Love Song'
-    }]);
-
+function Playlist({playlist,handleChangePlaylistName,playlistName,handleSubmitToSpotify,removefromPlaylist}){
     return(
         <>
             <div className={styles.playlistContainer}>
-                <input type="text" className={styles.input} value={playlistName}/>
-                <button className={styles.button}>Save to Spotify</button>
+                <input type="text" className={styles.input} value={playlistName} onChange={handleChangePlaylistName}/>
+                <button className={styles.button} onClick={handleSubmitToSpotify}>Save to Spotify</button>
                 {playlist.map(song => {
-                return <Track key={song.id} songName={song.songName} artist={song.artist} album={song.album}v/>
+                return <Track key={song.id} id={song.id} songName={song.songName} artist={song.artist} album={song.album} sign="-" manipulatePlaylist={removefromPlaylist}/>
                 })}
             </div>
             

@@ -1,29 +1,9 @@
 import React, {useState,useEffect} from "react";
 import styles from './SearchBar.module.css';
 
-const songList = [{
-    id: 1111,
-    songName: 'Happy',
-    artist: 'Pharell',
-    album: 'Happy'
-  },{
-    id: 11311,
-    songName: 'jogging',
-    artist: 'Minju',
-    album: 'Minju Love Song'
-  },{
-    id: 11511,
-    songName: 'Fly',
-    artist: 'Marshmellow',
-    album: 'MarshmellowFirst'
-  },{
-    id: 141511,
-    songName: 'Talk',
-    artist: 'Angus',
-    album: 'Angus Single'
-  }]
+
   
-function SearchBar({handleSearchResult}){
+function SearchBar({token,handleSearchResult}){
     const [songName,setSongName] = useState('');
     const [isSubmit, setIsSubmit] = useState(false);
 
@@ -32,11 +12,31 @@ function SearchBar({handleSearchResult}){
             console.log("Performing search for:", songName);
             // Call Spotify API to search for the song
             //handleSearchResult (result)
-            handleSearchResult(songList)
+            fetchData(songName);
             setIsSubmit(false); // Reset isSubmit after performing the search
         }
     }, [songName, isSubmit]);
+    
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${songName}&type=track&limit=50&market=HK`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
 
+        if (response.ok) {
+          const jsonData = await response.json();
+          handleSearchResult(jsonData.tracks.items)
+        } else {
+          throw new Error('Error: ' + response.status);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    
     function handleChange(e){
         setSongName(e.target.value);
     }
